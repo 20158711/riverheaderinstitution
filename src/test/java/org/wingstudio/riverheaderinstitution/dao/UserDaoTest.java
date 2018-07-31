@@ -36,7 +36,7 @@ public class UserDaoTest extends BaseTest {
         List<User> all = userDao.findAll();
         UserCategory category = categoryDao.findById(Short.valueOf("1")).get();
         all.forEach(e->{
-            e.addUserCategory(category);
+            e.setUserCategory(category);
         });
         List<User> users = userDao.saveAll(all);
         System.out.println(users.size());

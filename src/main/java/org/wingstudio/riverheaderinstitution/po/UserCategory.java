@@ -18,15 +18,21 @@ public class UserCategory {
     @Setter @Getter
     private String categoryName;
 
-    @ManyToMany(cascade = CascadeType.REFRESH
-            ,mappedBy = "categorys")
+    @OneToMany(mappedBy = "userCategory")
     @Getter
     private Set<User> users=new HashSet<>();
 
+//    @ManyToMany(cascade = CascadeType.REFRESH
+//            ,mappedBy = "categorys")
+//    @Getter
+//    private Set<User> users=new HashSet<>();
+
     public void addUserToCategory(User user){
-        Set<UserCategory> categorys = user.getCategorys();
-        categorys.add(this);
-        user.setCategorys(categorys);
+        user.setUserCategory(this);
+    }
+
+    public void removeUserFromCategory(User user){
+        user.setUserCategory(null);
     }
 
     @Override

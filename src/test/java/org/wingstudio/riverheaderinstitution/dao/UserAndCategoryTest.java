@@ -67,14 +67,14 @@ public class UserAndCategoryTest extends BaseTest {
         UserCategory save2 = userCategoryDao.save(userCategory);
         Assert.assertEquals(categoryName,save2.getCategoryName());
 
-        user.addUserCategory(category);
+        user.setUserCategory(category);
         User save = userDao.save(user);
         User user1 = userDao.getOne(12l);
         System.out.println("##########categorys##########");
         System.out.println(user1);
         System.out.println("##########categorys##########");
 
-        Assert.assertNotEquals(0, save.getCategorys().size());
+        Assert.assertNotNull( save.getUserCategory());
 
     }
 
@@ -84,11 +84,11 @@ public class UserAndCategoryTest extends BaseTest {
 
         User user=userDao.getOne(1L);
         UserCategory category=userCategoryDao.getOne(Short.valueOf("1"));
-        user.removeCategory(category);
+        user.setUserCategory(null);
         userDao.save(user);
         user=userDao.getOne(1L);
         System.out.println(user);
-        Assert.assertEquals(0,user.getCategorys().size());
+        Assert.assertNotNull(user.getUserCategory());
 
     }
 

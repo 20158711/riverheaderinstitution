@@ -4,6 +4,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.wingstudio.riverheaderinstitution.BaseTest;
 import org.wingstudio.riverheaderinstitution.TestUtil;
 import org.wingstudio.riverheaderinstitution.po.News;
@@ -18,6 +21,13 @@ public class NewsDaoTest extends BaseTest {
 
     @Autowired
     private NewsDao newsDao;
+
+    @Test
+    public void list(){
+        Pageable pageable=new PageRequest(0,10);
+        Page<News> newsByNewsTitleLike = newsDao.findNewsByNewsTitleLike("%%", pageable);
+        System.out.println(newsByNewsTitleLike.getTotalElements());
+    }
 
     @Before
     public void setUp() throws Exception {

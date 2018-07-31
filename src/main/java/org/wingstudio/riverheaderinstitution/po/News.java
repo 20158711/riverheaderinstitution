@@ -3,7 +3,6 @@ package org.wingstudio.riverheaderinstitution.po;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
-
 import javax.persistence.*;
 import java.util.Date;
 

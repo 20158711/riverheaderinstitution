@@ -17,6 +17,9 @@ public class UserCategoryController {
     @Autowired
     private IUserCategoryService iUserCategoryService;
 
+    @Autowired
+
+
     @RequestMapping("/list")
     public ServerResponse<List<UserCategoryVo>> list(){
         return iUserCategoryService.listUserCategoryVos();

@@ -1,6 +1,8 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
+!src/lib/
 /target
+TestJava.java
 /out
 ### STS ###
 .apt_generated
@@ -24,3 +26,14 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+src/lib/
+src/main/resources/static/js/uedit/dialogs/
+src/main/resources/static/js/uedit/index.html
+src/main/resources/static/js/uedit/jsp/
+src/main/resources/static/js/uedit/lang/
+src/main/resources/static/js/uedit/themes/
+src/main/resources/static/js/uedit/third-party/
+src/main/resources/static/js/uedit/ueditor.all.js
+src/main/resources/static/js/uedit/ueditor.all.min.js
+src/main/resources/static/js/uedit/ueditor.parse.js
+src/main/resources/static/js/uedit/ueditor.parse.min.js

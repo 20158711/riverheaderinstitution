@@ -7,6 +7,7 @@ import org.springframework.util.CollectionUtils;
 import org.wingstudio.riverheaderinstitution.common.ServerResponse;
 import org.wingstudio.riverheaderinstitution.dao.*;
 import org.wingstudio.riverheaderinstitution.po.River;
+import org.wingstudio.riverheaderinstitution.po.User;
 import org.wingstudio.riverheaderinstitution.service.IRiverService;
 import org.wingstudio.riverheaderinstitution.vo.RiverVo;
 
@@ -49,9 +50,10 @@ public class IRiverServiceImpl implements IRiverService {
                 riverVo.setTown(river.getTown().getTownName());
                 riverVo.setFunction(river.getFunction().getFunction());
                 riverVo.setWaterSituation(river.getWaterSituation().getSituationDesc());
-                riverVo.setHeaderName(river.getHeader().getUsername());
-                riverVo.setHeaderTel(river.getHeader().getTel());
-                riverVo.setHeaderUserCategory(null);
+                User header=river.getHeader();
+                riverVo.setHeaderName(header.getUsername());
+                riverVo.setHeaderTel(header.getTel());
+                riverVo.setHeaderUserCategory(header.getUserCategory()==null?null:header.getUserCategory().getCategoryName());
                 riverVoList.add(riverVo);
             });
         }

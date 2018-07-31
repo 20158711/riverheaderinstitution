@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -19,7 +20,7 @@ public class ProblemCategory {
 
     @OneToMany(mappedBy = "problemCategory")
     @Getter
-    private Set<Event> events;
+    private Set<Event> events=new HashSet<>();
 
     @Override
     public String toString() {

@@ -23,22 +23,26 @@ public class User {
     @Setter @Getter
     private String tel;
 
-    @ManyToMany(cascade = CascadeType.REFRESH)
-    @JoinTable(
-            name = "user_to_category"
-    )
+    @ManyToOne
     @Setter @Getter
-    private Set<UserCategory> categorys=new HashSet<>();
+    private UserCategory userCategory;
 
-    public void addUserCategory(UserCategory category){
-        categorys.add(category);
-    }
+//    @ManyToMany(cascade = CascadeType.REFRESH)
+//    @JoinTable(
+//            name = "user_to_category"
+//    )
+//    @Setter @Getter
+//    private Set<UserCategory> categorys=new HashSet<>();
 
-    public void removeCategory(UserCategory category){
-        if(categorys.contains(category)){
-            categorys.remove(category);
-        }
-    }
+//    public void addUserCategory(UserCategory category){
+//        categorys.add(category);
+//    }
+//
+//    public void removeCategory(UserCategory category){
+//        if(categorys.contains(category)){
+//            categorys.remove(category);
+//        }
+//    }
 
     @OneToMany(cascade = {CascadeType.REFRESH}
     ,mappedBy = "uploadUser")
@@ -58,8 +62,8 @@ public class User {
     public String toString() {
 
         StringBuffer stringBuffer=new StringBuffer();
-        if(!CollectionUtils.isEmpty(categorys))
-            categorys.forEach(e->stringBuffer.append(e.getCategoryName()+"\t"));
+//        if(!CollectionUtils.isEmpty(categorys))
+//            categorys.forEach(e->stringBuffer.append(e.getCategoryName()+"\t"));
         StringBuffer eventsBuffer=new StringBuffer();
         if (!CollectionUtils.isEmpty(events))
             events.forEach(e->eventsBuffer.append(e.getProblemDesc()+"\t"));
@@ -68,7 +72,7 @@ public class User {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", tel='" + tel + '\'' +
-                ", categorys["+stringBuffer.toString() +
+                ", category="+userCategory +
                 ", events["+eventsBuffer.toString()+
                 "]}";
     }
